@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: todo-backend-deployment
+  name: backend-deployment
 spec:
   replicas: 1
   selector:
@@ -25,8 +25,8 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: todo-backend-service
-  namespace: gcp-todo-prod
+  name: backend-service
+  namespace: gcp-devops-prod
   labels:
     app.kubernetes.io/managed-by: gcp-cloud-build-deploy
 spec:

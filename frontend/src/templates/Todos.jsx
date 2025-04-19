@@ -15,7 +15,7 @@ export default function Todos(){
 
     const fetchTasks = async () => {
         try{
-            const response = await axios.get('http://104.154.219.145/api/todos/')
+            const response = await axios.get('http://34.170.48.35/api/todos/')
             setTasks(response.data)
         }catch(error) {
             console.log('error', error);
@@ -25,7 +25,7 @@ export default function Todos(){
 
     const deleteTask = async (taskId) => {
         try{
-            await axios.delete(`http://104.154.219.145/api/todos/${taskId}/delete`)
+            await axios.delete(`http://34.170.48.35/api/todos/${taskId}/delete`)
             const updatedTask = tasks.filter(task => task.id !== taskId)
             setTasks(updatedTask)
         }catch(error) {
@@ -37,7 +37,7 @@ export default function Todos(){
     const addTask = async () => {
         try { 
             if (inputValue.trim() !== '') {
-                const response = await axios.post('http://104.154.219.145/api/todos/add', {
+                const response = await axios.post('http://34.170.48.35/api/todos/add', {
                     title: inputValue,
                     completed: false
                 });
@@ -55,7 +55,7 @@ export default function Todos(){
             const taskToUpdate = tasks.find(task=>task.id == taskId)
 
             if (taskToUpdate) {
-                const response = await axios.put(`http://104.154.219.145/api/todos/${taskId}/update`, {
+                const response = await axios.put(`http://34.170.48.35/api/todos/${taskId}/update`, {
 
                     completed: !taskToUpdate.completed
                 });

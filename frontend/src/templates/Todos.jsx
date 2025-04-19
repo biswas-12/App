@@ -80,7 +80,7 @@ export default function Todos(){
         <div className="container">
         <div className="todo-app">
             <div className="app-title">
-                <h2>To-do app</h2>
+                <h2>TaskTracker 📝</h2>
                 <i className="fa-solid fa-book-bookmark"></i>
             </div>
             <div className="row">

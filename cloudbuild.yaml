@@ -2,36 +2,38 @@ steps:
   # 🐍 Backend: Build and Push
   - name: 'gcr.io/cloud-builders/docker'
     args: ['build', '-t', 'gcr.io/$PROJECT_ID/backend:latest', './Backend']
+
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', 'gcr.io/$PROJECT_ID/backend:latest']
 
   # ⚛️ Frontend: Build and Push
   - name: 'gcr.io/cloud-builders/docker'
     args: ['build', '-t', 'gcr.io/$PROJECT_ID/frontend:latest', './frontend']
+
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', 'gcr.io/$PROJECT_ID/frontend:latest']
 
-# 🚀 Deploy backend to GKE
-- name: "gcr.io/cloud-builders/gke-deploy"
-  args:
-    - run
-    - --filename=K8s/backend-deployment.yaml
-    - --image=gcr.io/$PROJECT_ID/backend
-    - --location=us-central1         
-    - --cluster=gcp-devops-project           
-    - --namespace=gcp-devops-prod
+  # 🚀 Deploy backend to GKE
+  - name: 'gcr.io/cloud-builders/gke-deploy'
+    args:
+      - run
+      - --filename=K8s/backend-deployment.yaml
+      - --image=gcr.io/$PROJECT_ID/backend:latest
+      - --location=us-central1
+      - --cluster=gcp-devops-project
+      - --namespace=gcp-devops-prod
 
   # 🚀 Deploy frontend to GKE
-  - name: "gcr.io/cloud-builders/gke-deploy"
+  - name: 'gcr.io/cloud-builders/gke-deploy'
     args:
       - run
       - --filename=K8s/frontend-deployment.yaml
-      - --image=gcr.io/$PROJECT_ID/frontend
+      - --image=gcr.io/$PROJECT_ID/frontend:latest
       - --location=us-central1
-      - --cluster=gcp-devops-project            
+      - --cluster=gcp-devops-project
       - --namespace=gcp-devops-prod
 
 options:
   logging: CLOUD_LOGGING_ONLY
-  
+
 serviceAccount: 'cloud-chef-439008@appspot.gserviceaccount.com'

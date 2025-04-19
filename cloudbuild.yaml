@@ -15,7 +15,7 @@ steps:
   - name: "gcr.io/cloud-builders/gke-deploy"
     args:
       - run
-      - --filename=k8s/backend-deployment.yaml
+      - --filename=K8s/backend-deployment.yaml
       - --image=gcr.io/$PROJECT_ID/backend
       - --location=us-central1-c
       - --cluster=gcp-devops-project
@@ -25,7 +25,7 @@ steps:
   - name: "gcr.io/cloud-builders/gke-deploy"
     args:
       - run
-      - --filename=k8s/frontend-deployment.yaml
+      - --filename=K8s/frontend-deployment.yaml
       - --image=gcr.io/$PROJECT_ID/frontend
       - --location=us-central1-c
       - --cluster=gcp-devops-project

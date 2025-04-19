@@ -17,7 +17,7 @@ steps:
     - run
     - --filename=K8s/backend-deployment.yaml
     - --image=gcr.io/$PROJECT_ID/backend
-    - --location=us-central1-a          
+    - --location=us-central1         
     - --cluster=my-cluster-1            
     - --namespace=gcp-devops-prod
 
@@ -27,7 +27,7 @@ steps:
       - run
       - --filename=K8s/frontend-deployment.yaml
       - --image=gcr.io/$PROJECT_ID/frontend
-      - --location=us-central1-a
+      - --location=us-central1
       - --cluster=my-cluster-1            
       - --namespace=gcp-devops-prod
 

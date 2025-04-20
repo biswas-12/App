@@ -1,19 +1,19 @@
 steps:
-  # 🐍 Backend: Build and Push
+  # Backend:
   - name: 'gcr.io/cloud-builders/docker'
     args: ['build', '-t', 'gcr.io/$PROJECT_ID/backend:latest', './Backend']
 
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', 'gcr.io/$PROJECT_ID/backend:latest']
 
-  # ⚛️ Frontend: Build and Push
+  # Frontend:
   - name: 'gcr.io/cloud-builders/docker'
     args: ['build', '-t', 'gcr.io/$PROJECT_ID/frontend:latest', './frontend']
 
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', 'gcr.io/$PROJECT_ID/frontend:latest']
 
-  # 🚀 Deploy backend to GKE
+  # Deploy backend to GKE
   - name: 'gcr.io/cloud-builders/gke-deploy'
     args:
       - run
@@ -24,7 +24,7 @@ steps:
       - --namespace=gcp-devops-prod
       - --output=output/backend
 
-  # 🚀 Deploy frontend to GKE
+  # Deploy frontend to GKE
   - name: 'gcr.io/cloud-builders/gke-deploy'
     args:
       - run

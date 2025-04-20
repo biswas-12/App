@@ -39,4 +39,4 @@ steps:
 options:
   logging: CLOUD_LOGGING_ONLY
 
-serviceAccount: 'cloud-chef-439008@appspot.gserviceaccount.com'
+serviceAccount: 'ADD_SERVICE_ACCOUNT'

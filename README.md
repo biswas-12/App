@@ -54,6 +54,7 @@ After pushing code to the configured branch, Cloud Build will automatically trig
 Create Kubernetes YAML files inside a /k8s folder:
  - frontend-deployment.yaml
  - backend-deployment.yaml
+   
 Define both deployement and services in each.
 
 ### 🔄 Step 6: Update cloudbuild.yaml to Deploy

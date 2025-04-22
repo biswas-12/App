@@ -24,3 +24,48 @@ Any changes made in the GitHub repository automatically trigger a build and depl
  - Google Cloud Build
  - Google Artifact Registry
  - Google Kubernetes Engine (GKE)
+
+## 🚀 How to Implement
+
+Follow the steps below to build and deploy this app with an automated CI/CD pipeline on Google Cloud using **Cloud Build**, **Artifact Registry**, and **GKE**.
+
+---
+
+### 🔧 Step 1: Clone the Repository
+
+```bash
+git clone https://github.com/biswas-12/Todo-App-using-GCP-CICD.git
+```
+
+### 🔗 Step 2: Create a Cloud Build Trigger
+ - Navigate to **Cloud Build > Triggers** in the Google Cloud Console.
+ - Connect your GitHub repository.
+ - Set the trigger to activate on push to main branch (or your desired branch).
+
+### 📦 Step 3: Add cloudbuild.yaml File
+This file is used by Cloud Build to:
+ - Build the Docker image
+ - Push it to Google Artifact Registry
+
+### ✅ Step 4: Commit Code
+After pushing code to the configured branch, Cloud Build will automatically trigger and start the build process.
+
+### 📁 Step 5: Add Kubernetes Manifests
+Create Kubernetes YAML files inside a /k8s folder:
+ - frontend-deployment.yaml
+ - backend-deployment.yaml
+Define both deployement and services in each.
+
+### 🔄 Step 6: Update cloudbuild.yaml to Deploy
+Add kubectl deployment steps to your cloudbuild.yaml:
+
+### 🌀 Step 7: Push Updated Code Again
+Once you commit your Kubernetes manifests and updated cloudbuild.yaml, Cloud Build will:
+ - Build and push your Docker image
+ - Deploy it to GKE
+
+
+### 🌐 Step 8: Access Your Application
+ - Get the external IP from the Kubernetes service:
+ - Visit your frontend and backend in the browser using that IP!
+
